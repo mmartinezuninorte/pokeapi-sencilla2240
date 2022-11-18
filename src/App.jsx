@@ -1,5 +1,16 @@
 import './App.css'
 import {useState, useEffect} from 'react'
+import {PokemonList} from './components/PokemonList'
+import {Button} from './components/Button'
+
+// Implementar TryCatch
+// Aplicar Bootstrap a este proyecto
+// Una tabla desde bootstrap y un NavBar
+// Crear un tercer boton que te lleve a la primera pagina
+
+//BONUS
+// Como obtener una imagen y renderizarla en mi listado
+// o en una tabla
 
 
 function App() {
@@ -36,14 +47,21 @@ function App() {
   },[actual])
   return (
     <div className="App">
-      <ul>
-        {/* recorro pokemones y extraigo name para imprimirlo en una lista */}
-        {pokemones.map((pokemon, index)=>{
-            return <li key={index}>{pokemon.name}</li>
-        })}
-      </ul>
-      <button onClick={()=> anterior !== null && setActual(anterior)}  disabled={anterior===null}>Anterior</button>
-      <button onClick={()=> siguiente !== null && setActual(siguiente)}>Siguiente</button>
+      
+
+      <PokemonList pokemones={pokemones}/>
+
+      <Button 
+        onClick={()=>anterior!== null && setActual(anterior)} 
+        mostrar={'Anterior'} 
+        comprobacion={anterior} />
+
+      <Button
+        onClick={()=>siguiente!== null && setActual(siguiente)} 
+        mostrar={'Siguiente'} 
+        comprobacion={siguiente}/>
+      {/* <button onClick={()=> anterior !== null && setActual(anterior)}  disabled={anterior===null}>Anterior</button>
+      <button onClick={()=> siguiente !== null && setActual(siguiente)}>Siguiente</button> */}
     </div>
     
   )
